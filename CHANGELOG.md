@@ -8,6 +8,30 @@ must carry an entry for it, and the tree must be clean.
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-31
+
+### Added
+
+- **One skip-when-unchanged for the family** (`ADR-010`). The workspace crate
+  `crates/grd-skip` keys a member's run on the working tree, its config and
+  the arguments that change the result, and stores the clean run's output.
+  On an unchanged tree a member prints that output again, then
+  `<member>: skipped: unchanged since clean run at <UTC>, key <7 hex>`. A
+  member that cannot skip prints `<member>: not skipped: <reason>` on stderr.
+  wrkgrd, ctxgrd and trtlgrd build against it by path, at `../grd`. The grd
+  binary does not link it.
+
+### Changed
+
+- **`grd stop` runs trtlgrd as `trtlgrd lint --harness claude`** (`ADR-010`
+  Open Question 6), in place of `lint --format json`. trtlgrd's skip line
+  now reaches the `systemMessage`.
+
+### Not shipped
+
+- No `x86_64-pc-windows-msvc` archive. This release was built by hand on a
+  Mac, which cannot build it.
+
 ## [0.2.0] - 2026-10-21
 
 ### Added
