@@ -8,6 +8,16 @@ must carry an entry for it, and the tree must be clean.
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-11-06
+
+### Added
+
+- **`grd session start` runs `ctxgrd briefing --harness claude`** in a project
+  with a `ctxgrd.toml` (ctxgrd `ADR-159`). A session now starts with what each
+  pack says it should know, such as roadmap items and their status. A repo with
+  no `[<NS>.briefing]` table adds nothing. Needs ctxgrd 6.2.0 or later: an older
+  ctxgrd fails, and grd drops that member's output (`GRD-010`).
+
 ## [0.3.0] - 2026-10-31
 
 ### Added
